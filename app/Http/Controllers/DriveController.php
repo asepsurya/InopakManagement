@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class DriveController extends Controller
 {
     public function add(request $request){
-        headFolder::create([
-            'link'=>$request->link,
-            'name'=>$request->namaFolder,
-            'id_user'=>$request->owner,
-            'type'=>$request->type,
-            
+        $validasi = $request->validate([
+            'link'=>'',
+            'name'=>'required|unique:head_Folders',
+            'id_user'=>'',
+            'type'=>''
         ]);
+        headFolder::create($validasi);
         return redirect()->back();
     }
     public function data($name, $id){ 
@@ -23,31 +23,19 @@ class DriveController extends Controller
             // folder Search
             $b = Folders::where('id_user',auth()->user()->id)->get('id');
             foreach($b as $a){
-                if($a->id == auth()->user()->id){
+                if($a){
                     $data = Folders::where('name','like','%' . request('search') .'%')->get();
-                   
-                }else{
-                    $data = Folders::where([['name','like','%' . request('search') .'%'],['id_user','like','%' . auth()->user()->id .'%']])->get();
+                    $file = DataFile::where('name','like','%' . request('search') .'%')->get();
                 }
-            }
-            // folder Search
-            $b = DataFile::where('id_user',auth()->user()->id)->get('id');
-            foreach($b as $a){
-                if($a->id == auth()->user()->id){
-                    $dataFile = DataFile::where('name','like','%' . request('search') .'%')->get();
-                   
-                }else{
-                    $dataFile = DataFile::where([['name','like','%' . request('search') .'%'],['id_user','like','%' . auth()->user()->id .'%']])->get();
-                }
-            }
-            return view('FolderData.data',[
-                'title'=>'Hasil Pencarian : '.request('search'),
-                'dataFolder'=>headFolder::all(),
-                'ambilID'=>headFolder::where('id',$id)->get(),
-                'dataFile'=>$dataFile,
-                'folder'=>$data
-            ]);
-            
+                return view('FolderData.data',[
+                    'title'=>'Hasil Pencarian : '.request('search'),
+                    'dataFolder'=>headFolder::all(),
+                    'ambilID'=>headFolder::where('id',$id)->get(),
+                    'dataFile'=>$file,
+                    'folder'=>$data
+                ]);              
+            }    
+                               
         }else{
             // Tidak Melakukan Pencaharian
             return view('FolderData.data',[
@@ -60,9 +48,7 @@ class DriveController extends Controller
             ]);
         }     
     }
-
     public function addFolder(request $request){
-
        $cek =  Folders::where(['name'=>$request->name,'link'=>$request->link,'id_folder'=>$request->id_folder])->get();
        foreach($cek as $a){
 
@@ -70,8 +56,7 @@ class DriveController extends Controller
             $h = 'required|unique:Folders';
         }else{
             $h='required';
-        }
-        
+        }    
         $validasi = $request->validate([
             'link'=>'',
             'name'=>$h,
@@ -89,30 +74,18 @@ class DriveController extends Controller
         return back()->with('gagal','Login Gagal!! Periksa Kembali Data Anda');  
     
     }
-
-// ketika request lebih dari 3 step link
-    // public Function showFolder($masterFolder, $folderName , $id){
-    //     return view('FolderData.data',[
-    //         'title'=>$folderName,
-    //         'dataFolder'=>headFolder::all(),
-    //         'ambilID'=>headFolder::where('id',$id)->get(),
-    //         'folder'=>Folders::where([['id_folder'=> $id],['link'=>$folderName.'/']
-    //         ])->get()
-    //     ]);
-    // }
-
     public function renameDrive(request $request){
-        headFolder::where('id',$request->id_folder)->update([
-            'name'=>$request->namaFolder,
-            'link'=>$request->namaFolder.'/'
-        ]);
+        $validasi = $request->validate(['name' =>'required|unique:head_folders','link'=>'']);
+        $validasi['link'] = $request->name.'/';
+        headFolder::where('id',$request->id_folder)->update($validasi);
+
         Folders::where('link',$request->link)->update([
-            'link'=>$request->namaFolder.'/'
+            'link'=>$request->name.'/'
         ]);
         DataFile::where('link',$request->link)->update([
-            'link'=>$request->namaFolder.'/'
+            'link'=>$request->name.'/'
         ]);
-        return redirect('/home/'.$request->namaFolder.'/'.$request->id_folder);
+        return redirect('/home/'.$request->name.'/'.$request->id_folder);
     }
 }
 

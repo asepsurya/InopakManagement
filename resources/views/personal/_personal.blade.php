@@ -259,18 +259,7 @@
                                             class="sub-text text-soft">{{ auth()->user()->email }}</span></div>
                                 </div>
                             </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li><a href="https://dashlite.net/demo3/user-profile-regular.html"><em
-                                                class="icon ni ni-user-alt"></em><span>View Profile</span></a></li>
-                                    <li><a href="https://dashlite.net/demo3/user-profile-setting.html"><em
-                                                class="icon ni ni-setting-alt"></em><span>Account Setting</span></a>
-                                    </li>
-                                    <li><a href="https://dashlite.net/demo3/user-profile-activity.html"><em
-                                                class="icon ni ni-activity-alt"></em><span>Login Activity</span></a>
-                                    </li>
-                                </ul>
-                            </div>
+                           
                             <div class="dropdown-inner">
                                 <ul class="link-list">
                                     <li>
@@ -666,7 +655,7 @@
                                                                     <div class="nk-file-name-text">
                                                                        
                                                                        @if ($a->extention == 'pdf')
-                                                                            <a href="#" onclick="window.open('/aksi/pdfview/{{ $a->link }}','_blank', 'fullscreen=yes')" class="title">{{Str::limit($a->name , 30) }}</a>
+                                                                            <a href="#" onclick="window.open('/aksi/pdfview/{{ $a->link }}{{ $a->id }}','_blank', 'fullscreen=yes')" class="title">{{Str::limit($a->name , 30) }}</a>
                                                                         @elseif ($a->extention == 'jpg' )
                                                                             <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
                                                                         @elseif ($a->extention == 'png' )

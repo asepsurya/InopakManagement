@@ -14,12 +14,12 @@
                             $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);   
                         @endphp
                         <input type="text" value="{{ $title }}/" name="link" hidden>
-                        <input type="text" value="{{ auth()->user()->id }}" name="owner" hidden>
+                        <input type="text" value="{{ auth()->user()->id }}" name="id_user" hidden>
                         <input type="text" value="folder" name="type" hidden>
                         <div class="form-control-wrap">
                             <div class="form-icon form-icon-right"><em class="icon ni ni-folder"></em></div><input
                                 type="text" class="form-control form-control-xl form-control-outlined"
-                                id="outlined-right-icon" name="namaFolder"><label class="form-label-outlined"
+                                id="outlined-right-icon" name="name"><label class="form-label-outlined"
                                 for="outlined-right-icon">Nama Folder</label>
                         </div>
                     </div>

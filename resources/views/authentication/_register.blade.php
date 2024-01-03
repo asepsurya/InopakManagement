@@ -9,7 +9,7 @@
     <meta name="description"
         content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
     <link rel="shortcut icon" href="{{ asset('images/Fav.png') }}">
-    <title>Login | INOPAK MANAGEMENT</title>
+    <title>Register | INOPAK MANAGEMENT</title>
     <link rel="stylesheet" href="{{ asset('assets/css/dashlitee5ca.css?ver=3.2.3') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/themee5ca.css?ver=3.2.3') }}">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-91615293-4"></script>

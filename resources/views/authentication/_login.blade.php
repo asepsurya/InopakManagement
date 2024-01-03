@@ -84,7 +84,7 @@
                                     <div class="form-group"><button
                                             class="btn btn-lg btn-primary btn-block">Sign In</button></div>
                                 </form>
-
+                                <div class="form-note-s2 pt-4"> Belum Mempunyai akun? <a href="/register">Buat akun Baru</a></div>
                                 </ul>
                             </div>
                         </div>

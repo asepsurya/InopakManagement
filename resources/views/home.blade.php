@@ -1,186 +1,257 @@
 @extends('layout.main')
 @section('container')
-{{ Breadcrumbs::render('home') }}
-<div class="alert alert-pro alert-primary">
-    <div class="alert-text">
-        <h6>Selamat Datang, {{ auth()->user()->name }}</h6>
-        <p>Kami Percaya Pertumbuhan Ekonomi yang  Kuat ditopang oleh UMKM yang Berkelanjutan</p>
-            <p><a href="https://inopakinstitute.or.id/" target="_blank" rel="noopener noreferrer">https://inopakinstitute.or.id</a></p>
-    </div>
-</div>
-
-<div class="nk-fmg-quick-list nk-block">
-    <div class="nk-block-head-xs">
-        <div class="nk-block-between g-2">
-            <div class="nk-block-head-content">
-                <h6 class="nk-block-title title">Quick Access</h6>
-            </div>
-            <div class="nk-block-head-content"><a href="#" class="link link-primary toggle-opt active" data-target="quick-access">
-                    <div class="inactive-text">Show</div>
-                    <div class="active-text">Hide</div>
-                </a></div>
+    
+    <div class="alert alert-pro alert-primary alert-dismissible">
+        <div class="alert-text">
+            <h6>Selamat Datang, {{ auth()->user()->name }}</h6>
+    
+            <p>Kami Percaya Pertumbuhan Ekonomi yang Kuat ditopang oleh UMKM yang Berkelanjutan</p>
+            <p><strong>{{ date('l, d  M  Y') }} </strong> | <a href="https://inopakinstitute.or.id/" target="_blank"
+                    rel="noopener noreferrer">https://inopakinstitute.or.id</a></p>
         </div>
+        
     </div>
-    <div class="toggle-expand-content expanded" data-content="quick-access">
-        <div class="nk-files nk-files-view-grid">
-            <div class="nk-files-list">
-                <div class="nk-file-item nk-file">
-                    <div class="nk-file-info"><a href="/personal/private" class="nk-file-link">
-                            <div class="nk-file-title">
-                                <div class="nk-file-icon"><span class="nk-file-icon-type"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72"><g><rect x="32" y="16" width="28" height="15" rx="2.5" ry="2.5" style="fill:#6c87fe"></rect><path d="M59.7778,61H12.2222A6.4215,6.4215,0,0,1,6,54.3962V17.6038A6.4215,6.4215,0,0,1,12.2222,11H30.6977a4.6714,4.6714,0,0,1,4.1128,2.5644L38,24H59.7778A5.91,5.91,0,0,1,66,30V54.3962A6.4215,6.4215,0,0,1,59.7778,61Z" style="fill:#8aa3ff"></path><path d="M7.7454,58.9807C9.9352,61.3864,12.4882,61.0163,14,61H59a6.3373,6.3373,0,0,0,5.2562-2.0193Z" style="fill:#798bff"></path><path d="M29.6309,37.36a3.0236,3.0236,0,0,1-.86-2.39A4.3748,4.3748,0,0,1,32.9961,31h.0078a4.36,4.36,0,0,1,4.22,3.9121,3.0532,3.0532,0,0,1-.8545,2.4482A4.4158,4.4158,0,0,1,33.23,38.53c-.0771,0-.1533-.002-.23-.0049A4.519,4.519,0,0,1,29.6309,37.36Zm13.8359,2.7549a1,1,0,1,0-.9336,1.77c.7207.38,1.4658,2.126,1.4668,4.39V48a1,1,0,0,0,2,0V46.2744C45.999,43.3447,45.0049,40.9268,43.4668,40.1152ZM40.165,37.3965c-.1445.084-.29.168-.4316.2549a1,1,0,0,0,.5215,1.8535.9887.9887,0,0,0,.52-.1465c.1289-.0781.2607-.1543.3916-.23a4.2311,4.2311,0,0,0,2.1465-2.124.9839.9839,0,0,0,.0313-.1045A3.8411,3.8411,0,0,0,40.5,32.5352a1,1,0,0,0-.4922,1.9395,1.8773,1.8773,0,0,1,1.4,1.9092A2.835,2.835,0,0,1,40.165,37.3965ZM36.5,41h-7c-2.5234,0-4.5,2.7822-4.5,6.333V48.5a.8355.8355,0,0,0,.0588.2914.9731.9731,0,0,0,.3508.4946C26.4646,50.2812,29.4614,51,33,51s6.5353-.7187,7.59-1.7139a.9726.9726,0,0,0,.3509-.4949A.8361.8361,0,0,0,41,48.5V47.333C41,43.7822,39.0234,41,36.5,41Z" style="fill:#4b66bc"></path></g></svg></span></div>
-                                <div class="nk-file-name">
-                                    <div class="nk-file-name-text"><span class="title">Personal Data</span></div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <div class="nk-file-actions hideable"><a href="#" class="btn btn-sm btn-icon btn-trigger"><em class="icon ni ni-cross"></em></a></div>
-                </div>
-                <div class="nk-file-item nk-file">
-                    <div class="nk-file-info"><a href="/trash" class="nk-file-link">
-                            <div class="nk-file-title">
-                                <div class="nk-file-icon"><span class="nk-file-icon-type"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72 72">
-                                            <path fill="#6C87FE" d="M57.5,31h-23c-1.4,0-2.5-1.1-2.5-2.5v-10c0-1.4,1.1-2.5,2.5-2.5h23c1.4,0,2.5,1.1,2.5,2.5v10	C60,29.9,58.9,31,57.5,31z"></path>
-                                            <path fill="#8AA3FF" d="M59.8,61H12.2C8.8,61,6,58,6,54.4V17.6C6,14,8.8,11,12.2,11h18.5c1.7,0,3.3,1,4.1,2.6L38,24h21.8	c3.4,0,6.2,2.4,6.2,6v24.4C66,58,63.2,61,59.8,61z"></path>
-                                            <path display="none" fill="#8AA3FF" d="M62.1,61H9.9C7.8,61,6,59.2,6,57c0,0,0-31.5,0-42c0-2.2,1.8-4,3.9-4h19.3	c1.6,0,3.2,0.2,3.9,2.3l2.7,6.8c0.5,1.1,1.6,1.9,2.8,1.9h23.5c2.2,0,3.9,1.8,3.9,4v31C66,59.2,64.2,61,62.1,61z"></path>
-                                            <path fill="#798BFF" d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z"></path>
-                                        </svg></span></div>
-                                <div class="nk-file-name">
-                                    <div class="nk-file-name-text"><span class="title">Trash & Recovery</span></div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <div class="nk-file-actions hideable"><a href="#" class="btn btn-sm btn-icon btn-trigger"><em class="icon ni ni-cross"></em></a></div>
-                </div>
-                <div class="nk-file-item nk-file">
-                    <div class="nk-file-info"><a href="https://database.inopakinstitute.or.id/project" class="nk-file-link" target="blank_">
-                            <div class="nk-file-title">
-                                <div class="nk-file-icon"><span class="nk-file-icon-type"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72 72">
-                                            <path fill="#6C87FE" d="M57.5,31h-23c-1.4,0-2.5-1.1-2.5-2.5v-10c0-1.4,1.1-2.5,2.5-2.5h23c1.4,0,2.5,1.1,2.5,2.5v10	C60,29.9,58.9,31,57.5,31z"></path>
-                                            <path fill="#8AA3FF" d="M59.8,61H12.2C8.8,61,6,58,6,54.4V17.6C6,14,8.8,11,12.2,11h18.5c1.7,0,3.3,1,4.1,2.6L38,24h21.8	c3.4,0,6.2,2.4,6.2,6v24.4C66,58,63.2,61,59.8,61z"></path>
-                                            <path display="none" fill="#8AA3FF" d="M62.1,61H9.9C7.8,61,6,59.2,6,57c0,0,0-31.5,0-42c0-2.2,1.8-4,3.9-4h19.3	c1.6,0,3.2,0.2,3.9,2.3l2.7,6.8c0.5,1.1,1.6,1.9,2.8,1.9h23.5c2.2,0,3.9,1.8,3.9,4v31C66,59.2,64.2,61,62.1,61z"></path>
-                                            <path fill="#798BFF" d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z"></path>
-                                        </svg></span></div>
-                                <div class="nk-file-name">
-                                    <div class="nk-file-name-text"><span class="title">Projects Database</span></div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <div class="nk-file-actions hideable"><a href="#" class="btn btn-sm btn-icon btn-trigger"><em class="icon ni ni-cross"></em></a></div>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="nk-fmg-listing nk-block">
-    <div class="nk-block-head-xs">
-        <div class="nk-block-between g-2">
-            <div class="nk-block-head-content">
-                <h6 class="nk-block-title title">Recent Files</h6>
-            </div>
-            <div class="nk-block-head-content"><a href="#" class="link link-primary toggle-opt active" data-target="recent-files">
-                    <div class="inactive-text">Show</div>
-                    <div class="active-text">Hide</div>
-                </a></div>
-        </div>
-    </div>
-    <div class="toggle-expand-content expanded" data-content="recent-files">
-        <div class="nk-files nk-files-view-group">
-            <div class="nk-files-head">
-                <div class="nk-file-item">
-                    <div class="nk-file-info">
-                        <div class="dropdown">
-                            <div class="tb-head dropdown-toggle dropdown-indicator-caret" data-bs-toggle="dropdown">Last Opened</div>
-                            <div class="dropdown-menu dropdown-menu-xs">
-                                <ul class="link-list-opt no-bdr">
-                                    <li><a class="active" href="#"><span>Last
-                                                Opened</span></a></li>
-                                    <li><a href="#"><span>Name</span></a></li>
-                                    <li><a href="#"><span>Size</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
+    <div class="card bg-transparent">
+        <div class="card-inner py-3 border-bottom border-light rounded-0">
+            <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                    <div class="nk-block-head-content">
+                        <a class="btn btn-primary" data-bs-toggle="modal" href="#addEventPopup"><em class="icon ni ni-plus"></em><span>Add Event</span></a>
+                        
                     </div>
-                    <div class="nk-file-actions">
-                        <div class="dropdown"><a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <ul class="link-list-opt no-bdr">
-                                    <li><a href="#file-share" data-bs-toggle="modal"><em class="icon ni ni-share"></em><span>Share</span></a>
-                                    </li>
-                                    <li><a href="#file-copy" data-bs-toggle="modal"><em class="icon ni ni-copy"></em><span>Copy</span></a>
-                                    </li>
-                                    <li><a href="#file-move" data-bs-toggle="modal"><em class="icon ni ni-forward-arrow"></em><span>Move</span></a>
-                                    </li>
-                                    <li><a href="#" class="file-dl-toast"><em class="icon ni ni-download"></em><span>Download</span></a>
-                                    </li>
-                                    <li><a href="#"><em class="icon ni ni-trash"></em><span>Delete</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="nk-block-head-content">
+                        <h3 class="nk-block-title page-title">Kalender Kegiatan</h3>
                     </div>
                 </div>
             </div>
-            <div class="nk-files-group">     
-                <div class="nk-files-list">
-                    {{-- Data File --}}
-                    @foreach ($dataFile as $a)
-                    <div class="nk-file-item nk-file">
-                        <div class="nk-file-info">
-                            <div class="nk-file-title">
-                                <div class="nk-file-icon"><a class="nk-file-icon-link" href="#"><span class="nk-file-icon-type"><svg
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                                    <g>
-                                        <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill:#599def">
-                                        </path>
-                                        <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill:#c2e1ff"></path>
-                                        <rect x="27" y="31" width="18" height="2" rx="1" ry="1" style="fill:#fff"></rect>
-                                        <rect x="27" y="36" width="18" height="2" rx="1" ry="1" style="fill:#fff"></rect>
-                                        <rect x="27" y="41" width="18" height="2" rx="1" ry="1" style="fill:#fff"></rect>
-                                        <rect x="27" y="46" width="12" height="2" rx="1" ry="1" style="fill:#fff"></rect>
-                                    </g>
-                                </svg></span></a></div>
-                                <div class="nk-file-name">
-                                    <div class="nk-file-name-text">
-                                    @if ($a->extention == 'pdf')
-                                        <a href="#" onclick="window.open('/aksi/pdfview/{{ $a->link }}','_blank', 'fullscreen=yes')" class="title">{{Str::limit($a->name , 30) }}</a>
-                                    @elseif ($a->extention == 'jpg' )
-                                        <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
-                                    @elseif ($a->extention == 'png' )
-                                        <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
-                                    @elseif ($a->extention == 'jpeg' )
-                                        <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
-                                    @elseif($a->extention == 'mp4')
-                                        <a data-bs-toggle="modal" data-bs-target="#showFile-{{ $a->id }}" class="title">{{ Str::limit($a->name , 30) }}</a>
-                                    @else
-                                        <a href="#" class="title">{{ Str::limit($a->name , 30) }}</a>
-                                    @endif
-                                        <div class="asterisk"><a href="#"><em class="asterisk-off icon ni ni-star"></em><em class="asterisk-on icon ni ni-star-fill"></em></a>
+        </div>
+    </div>
+    <div class=" m-0">
+        <div class="card-inner">
+            <div id="calendar" class="nk-calendar"></div>
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="addEventPopup">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Events</h5><a href="#" class="close" data-bs-dismiss="modal"
+                        aria-label="Close"><em class="icon ni ni-cross"></em></a>
+                </div>
+                <div class="modal-body">
+                    <form action="/addEvent" id="addEventForm" class="form-validate is-alter" method="post">
+                        @csrf
+                        <div class="row gx-4 gy-3">
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label" for="event-title">Event Title</label>
+                                    <div class="form-control-wrap"><input type="text" class="form-control"
+                                            id="event-title" required name="title"></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group"><label class="form-label">Start Date</label>
+                                    <div class="row gx-2">
+                                        <div class="">
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-left"><em class="icon ni ni-calendar"></em>
+                                                </div><input type="text" id="event-start-date"
+                                                    class="form-control date-picker" data-date-format="yyyy-mm-dd" required
+                                                    name="start">
+                                            </div>
                                         </div>
+                                        {{-- <div class="w-45">
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-left"><em class="icon ni ni-clock"></em>
+                                            </div><input type="text" id="event-start-time"
+                                                data-time-format="HH:mm:ss" class="form-control time-picker">
+                                        </div>
+                                    </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            <ul class="nk-file-desc">
-                                <li class="date">{{ $a->link }}</li>
-
-                            </ul>
-                        </div>
-                        <div class="nk-file-actions">
-                            <div class="dropdown"><a href="#" class="dropdown-toggle btn btn-sm btn-icon btn-trigger" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                   {{--  --}}
+                            <div class="col-6">
+                                <div class="form-group"><label class="form-label">End Date</label>
+                                    <div class="row gx-2">
+                                        <div class="">
+                                            <div class="form-control-wrap">
+                                                <div class="form-icon form-icon-left"><em class="icon ni ni-calendar"></em>
+                                                </div><input type="text" id="event-end-date"
+                                                    class="form-control date-picker" data-date-format="yyyy-mm-dd"
+                                                    name="end">
+                                            </div>
+                                        </div>
+                                        {{-- <div class="w-45">
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-left"><em class="icon ni ni-clock"></em>
+                                            </div><input type="text" id="event-end-time" data-time-format="HH:mm:ss"
+                                                class="form-control time-picker">
+                                        </div>
+                                    </div> --}}
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label" for="event-description">Event
+                                        Description</label>
+                                    <div class="form-control-wrap">
+                                        <textarea class="form-control" id="event-description" name="description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label">Event Category</label>
+                                    <div class="form-control-wrap"><select id="event-theme"
+                                            class="select-calendar-theme form-control" data-search="on" name="kategori">
+                                            <option value="event-primary">Company</option>
+                                            <option value="event-success">Seminars </option>
+                                            <option value="event-info">Conferences</option>
+                                            <option value="event-warning">Meeting</option>
+                                            <option value="event-danger">Business dinners</option>
+                                            <option value="event-pink">Private</option>
+                                            <option value="event-primary-dim">Auctions</option>
+                                            <option value="event-success-dim">Networking events</option>
+                                            <option value="event-info-dim">Product launches</option>
+                                            <option value="event-warning-dim">Fundrising</option>
+                                            <option value="event-danger-dim">Sponsored</option>
+                                            <option value="event-pink-dim">Sports events</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <ul class="d-flex justify-content-between gx-4 mt-1">
+                                    <li><button type="submit" class="btn btn-primary">Add Event</button>
+                                    </li>
+                                    <li><button id="resetEvent" data-bs-dismiss="modal"
+                                            class="btn btn-danger btn-dim">Discard</button></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    @endforeach
-                   
+                    </form>
                 </div>
             </div>
-           
         </div>
     </div>
-</div>
+    <div class="modal fade" id="editEventPopup">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Event</h5><a href="#" class="close" data-bs-dismiss="modal"
+                        aria-label="Close"><em class="icon ni ni-cross"></em></a>
+                </div>
+                <div class="modal-body">
+                    <form action="/updateEvent" method="POST" class="form-validate is-alter">
+                        @csrf
+
+                        <input type="text" id="myid" name="id" hidden>
+                        <div class="row gx-4 gy-3">
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label" for="edit-event-title">Event
+                                        Title</label>
+                                    <div class="form-control-wrap"><input type="text" class="form-control"
+                                            id="edit-event-title" required name="title"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label" for="edit-event-description">Event
+                                        Description</label>
+                                    <div class="form-control-wrap">
+                                        <textarea class="form-control" id="edit-event-description" name="description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group"><label class="form-label">Event Category</label>
+                                    <div class="form-control-wrap"><select id="edit-event-theme" name="kategori"
+                                            class="select-calendar-theme form-control" data-search="on">
+                                            <option value="event-primary">Company</option>
+                                            <option value="event-success">Seminars </option>
+                                            <option value="event-info">Conferences</option>
+                                            <option value="event-warning">Meeting</option>
+                                            <option value="event-danger">Business dinners</option>
+                                            <option value="event-pink">Private</option>
+                                            <option value="event-primary-dim">Auctions</option>
+                                            <option value="event-success-dim">Networking events</option>
+                                            <option value="event-info-dim">Product launches</option>
+                                            <option value="event-warning-dim">Fundrising</option>
+                                            <option value="event-danger-dim">Sponsored</option>
+                                            <option value="event-pink-dim">Sports events</option>
+                                        </select></div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <ul class="d-flex justify-content-between gx-4 mt-1">
+                                    <li><button type="submit" class="btn btn-primary">Update
+                                            Event</button>
+                    </form>
+                    </li>
+                    
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal fade" id="previewEventPopup">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div id="preview-event-header" class="modal-header">
+                    <h5 id="preview-event-title" class="modal-title">Placeholder Title</h5><a href="#"
+                        class="close" data-bs-dismiss="modal" aria-label="Close"><em class="icon ni ni-cross"></em></a>
+                </div>
+                <div class="modal-body">
+                    <div class="row gy-3 py-1">
+                        <div class="col-sm-6">
+                            <h6 class="overline-title">Start Time + 1 day</h6>
+                            <p id="preview-event-start"></p> 
+                        </div>
+                        <div class="col-sm-6" id="preview-event-end-check">
+                            <h6 class="overline-title">End Time</h6>
+                            <p id="preview-event-end"></p>
+                        </div>
+                        <div class="col-sm-10" id="preview-event-description-check">
+                            <h6 class="overline-title">Description</h6>
+                            <p id="preview-event-description"></p>
+                        </div>
+                    </div>
+                    <ul class="d-flex justify-content-between gx-4 mt-3">
+                        <li><button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editEventPopup"
+                                class="btn btn-primary">Edit Event</button></li>
+                                <li>
+                                    <form action="/deleteEvent" method="post">
+                                        @csrf
+                                        <input type="text" id="myid2" name="id" hidden>
+                                        <button type="submit" class="btn btn-danger btn-dim">Delete</button>
+                                    </form>
+                                  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteEventPopup">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body modal-body-lg text-center">
+                    <div class="nk-modal py-4"><em
+                            class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                        <h4 class="nk-modal-title">Are You Sure ?</h4>
+                        <div class="nk-modal-text mt-n2">
+                            <p class="text-soft">This event data will be removed permanently.</p>
+                        </div>
+                        <ul class="d-flex justify-content-center gx-4 mt-4">
+                            <li><button data-bs-dismiss="modal" id="deleteEvent" class="btn btn-success">Yes, Delete
+                                    it</button></li>
+                            <li><button data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editEventPopup"
+                                    class="btn btn-danger btn-dim">Cancel</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -20,6 +20,7 @@
     </div>
 </div>
 @endforeach
+{{-- modal Edit Drive --}}
 @foreach ($ambilID as  $data )
 <div class="modal fade" tabindex="-1" id="ModalEditDrive-{{ $data->id }}">
     <div class="modal-dialog modal-sm" role="document">
@@ -37,13 +38,19 @@
                         <div class="form-control-wrap">
                             <div class="form-icon form-icon-right"><em class="icon ni ni-folder"></em></div><input
                                 type="text" value="{{ $data->name }}" class="form-control form-control-xl form-control-outlined"
-                                id="outlined-right-icon" name="namaFolder"><label class="form-label-outlined"
+                                id="outlined-right-icon" name="name"><label class="form-label-outlined"
                                 for="outlined-right-icon" >Nama Folder</label>
                         </div>
                     </div>
             </div>
-            <div class="modal-footer bg-light"><button type="submit" class="btn btn-primary btn-block">
-                <em class="icon ni ni-folder-plus"></em> <span>Rename</span></button></form></div>
+            <div class="modal-footer bg-light">
+                <div class="buttton-group">
+                    <button type="submit" class="btn btn-primary"><em class="icon ni ni-folder-plus"></em> <span>Rename</span></button></form>
+                    <a href="#"><button class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#yakinhapus"> Delete</button></a>
+                </div>
+                
+            </div>
         </div>
     </div>
 </div>
@@ -193,6 +200,36 @@
     </div>
 </div>
 @endforeach
+{{-- modal Konfirmasi Hapus --}}
+<div class="modal fade" tabindex="-1" id="yakinhapus">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal"><em
+                        class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-info-i bg-danger"></em>
+                    <h4 class="nk-modal-title">Yakin akan dihapus..?</h4>
+                    <div class="nk-modal-text">
+                        <p class="lead">Jika dihapus akan menghapus seluruh data yang ada di dalamnya</p>
+                        <p class="text-soft">info lebih lanjut hubungi admin</p>
+                    </div>
+                    <div class="nk-modal-action mt-5">
+                        <div class="btn-group">
+                            <form action="/aksi/driveHapus/" method="post">
+                            @csrf
+                            @foreach($ambilID  as $a)
+                                <input type="text" value="{{ $a->id }}" name="id" hidden>
+                            @endforeach
+                            <button class="btn btn-lg btn-mw btn-danger" type="submit" > Saya, Yakin </button>
+                            </form>
+                            <button class="btn btn-lg btn-mw btn-light"   data-bs-dismiss="modal"> Batal</button>
+                        </div>
+                    
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="nk-fmg-listing nk-block">
     <div class="nk-fmg-listing nk-block">
@@ -290,8 +327,8 @@
                             <div class="nk-file-name">
                                 <div class="nk-file-name-text">
                                                                        
-                                    @if ($a->extention == 'pdf')
-                                         <a href="#" onclick="window.open('/aksi/pdfview/{{ $a->link }}','_blank', 'fullscreen=yes')" class="title">{{Str::limit($a->name , 30) }}</a>
+                                     @if ($a->extention == 'pdf')
+                                         <a href="#" onclick="window.open('/aksi/pdfview/{{ $a->link }}{{ $a->id }}','_blank', 'fullscreen=yes')" class="title">{{Str::limit($a->name , 30) }}</a>
                                      @elseif ($a->extention == 'jpg' )
                                          <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
                                      @elseif ($a->extention == 'png' )
@@ -300,10 +337,11 @@
                                          <a class="title gallery-image popup-image" href="{{ asset('storage/'.$a->file) }}">{{ Str::limit($a->name , 30) }}</a>
                                      @elseif($a->extention == 'mp4')
                                          <a data-bs-toggle="modal" data-bs-target="#showFile-{{ $a->id }}" class="title">{{ Str::limit($a->name , 30) }}</a>
+                                    
                                      @else
                                          <a href="#" class="title">{{ Str::limit($a->name , 30) }}</a>
                                      @endif
-                                         <div class="asterisk"><a href="#"><em class="asterisk-off icon ni ni-star"></em><em class="asterisk-on icon ni ni-star-fill"></em></a></div>
+                                         
                                  </div>
                             </div>
                         </div>
@@ -336,7 +374,7 @@
                                                 class="icon ni ni-download"></em><span>Download</span></a></li>
                                     <li><a data-bs-toggle="modal" data-bs-target="#modalEditEmbedVideo-{{ $a->id }}"><em class="icon ni ni-pen"></em><span>Rename</span></a></li>
                                     <li>
-                                        <form action="/aksi/Deletefile/" method="post">
+                                        <form action="/aksi/Deletefile" method="post">
                                         @csrf
                                         <input type="text" name="id" value="{{ $a->id }}" hidden> 
                                         <input type="text" name="old_file" value="{{ $a->file }}" hidden> 
@@ -390,31 +428,5 @@
     </div>
 </div>
 
-{{-- Modal update drive Folder --}}
-<div class="modal fade" tabindex="-1" id="#a">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Folder Baru</h5><a href="#" class="close" data-bs-dismiss="modal"
-                    aria-label="Close"><em class="icon ni ni-cross"></em></a>
-            </div>
-            <div class="modal-body">
-                <form action="/createDrive" method="post">
-                    @csrf
-                    <div class="form-group">
-                      
-                        <div class="form-control-wrap">
-                            <div class="form-icon form-icon-right"><em class="icon ni ni-folder"></em></div><input
-                                type="text" class="form-control form-control-xl form-control-outlined"
-                                id="outlined-right-icon" name="namaFolder"><label class="form-label-outlined"
-                                for="outlined-right-icon">Nama Folder</label>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer bg-light"><button type="submit" class="btn btn-primary btn-block">
-                <em class="icon ni ni-folder-plus"></em> <span>Create</span></button></form></div>
-        </div>
-    </div>
-</div>
 
 @endsection

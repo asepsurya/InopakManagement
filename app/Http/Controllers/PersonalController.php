@@ -114,9 +114,22 @@ class PersonalController extends Controller
         return redirect()->back();
     }
 
-    public function pdfview($nameFolder){
+    public function pdfview($nameFolder, $id){
         return view('partial._pdf_viewer',[
-            'dataFile'=>DataFile::where(['id_user'=>auth()->user()->id,'link'=>$nameFolder.'/'])->get()
+            'dataFile'=>DataFile::where(['id_user'=>auth()->user()->id,'link'=>$nameFolder.'/','id'=>$id])->get()
         ]);
+    }
+    public function docview($nameFolder, $id){
+        return view('partial._office',[
+            'dataFile'=>DataFile::where(['id_user'=>auth()->user()->id,'link'=>$nameFolder.'/','id'=>$id])->get()
+        ]);
+    }
+
+    public function driveHapus(request $request){
+        $id = $request->id;
+        headFolder::where('id',$id)->delete();
+        DataFile::where('id_folder',$id)->delete();
+        folders::where('id_folder',$id)->delete();
+        return redirect('/');
     }
 }
